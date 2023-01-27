@@ -1,6 +1,6 @@
 ﻿namespace BrandUp.AmoCRM.Models
 {
-    public class Contact : BaseResponce
+    public class Contact : BaseResponce<ContactEmbedded>
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -15,6 +15,11 @@
         public bool IsDeleted { get; set; }
         public DateTime ClosestTaskAt { get; set; }
         public int AccountId { get; set; }
+    }
+
+    internal class ContactList
+    {
+        public Contact[] Contact { get; set; }
     }
 
     public class ContactEmbedded

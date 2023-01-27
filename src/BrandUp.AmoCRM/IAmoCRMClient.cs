@@ -1,9 +1,9 @@
 ﻿namespace BrandUp.AmoCRM
 {
-    public interface IAmoCRMClient
+    internal interface IAmoCRMBaseClient
     {
-        Task<IEnumerable<T>> GetAllAsync<T>();
-        Task<T> GetAsync<T>();
+        Task<IEnumerable<T>> GetAllAsync<T>(params string[] parameters);
+        Task<T> GetAsync<T>(params string[] parameters);
         Task PostAsync<T>(T entity);
         Task PostAsync<T>(T[] entity);
         Task PathcAsync<T>(T[] entity);

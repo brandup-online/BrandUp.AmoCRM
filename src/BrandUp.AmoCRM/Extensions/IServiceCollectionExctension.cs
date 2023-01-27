@@ -6,7 +6,7 @@ namespace BrandUp.AmoCRM.Extensions
     {
         public static IServiceCollection AddAmoCRMIntegration(this IServiceCollection services)
         {
-            services.AddHttpClient<AmoCRMClient>(client =>
+            services.AddHttpClient<AmoCRMBaseClient>(client =>
             {
                 client.BaseAddress = new("https://itamoelkastore.company.amocrm.ru");
             });
