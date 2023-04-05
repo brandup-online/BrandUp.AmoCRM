@@ -1,6 +1,6 @@
 ﻿namespace BrandUp.AmoCRM.Models
 {
-    public class Contact : BaseResponce<ContactEmbedded>
+    public class Contact : BaseResponse<ContactEmbedded>
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -17,11 +17,6 @@
         public int AccountId { get; set; }
     }
 
-    internal class ContactList
-    {
-        public Contact[] Contact { get; set; }
-    }
-
     public class ContactEmbedded
     {
         public Tags[] Tags { get; set; }
@@ -29,6 +24,4 @@
         public Embedded[] Leads { get; set; }
         public CatalogElements[] CatalogElements { get; set; }
     }
-
-
 }

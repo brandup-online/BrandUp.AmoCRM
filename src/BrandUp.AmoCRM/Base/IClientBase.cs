@@ -1,6 +1,6 @@
 ﻿namespace BrandUp.AmoCRM
 {
-    internal interface IAmoCRMBaseClient
+    public interface IClientBase
     {
         Task<IEnumerable<T>> GetAllAsync<T>(params string[] parameters);
         Task<T> GetAsync<T>(params string[] parameters);
