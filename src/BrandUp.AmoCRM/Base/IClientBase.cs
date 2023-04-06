@@ -2,7 +2,6 @@
 {
     public interface IClientBase
     {
-        Task<IEnumerable<T>> GetAllAsync<T>(params string[] parameters);
         Task<T> GetAsync<T>(params string[] parameters);
         Task PostAsync<T>(T entity);
         Task PostAsync<T>(T[] entity);

@@ -1,17 +1,9 @@
-﻿using BrandUp.AmoCRM.Models;
-using Microsoft.Extensions.Logging;
-using System.Net.Http.Json;
-using System.Text;
+﻿using Microsoft.Extensions.Logging;
 
 namespace BrandUp.AmoCRM
 {
     internal class ClientBase : IClientBase
     {
-        readonly static IDictionary<Type, string> pathDictionary = new Dictionary<Type, string>()
-        {
-            {typeof(Contact), "/api/v4/contacts" }
-        };
-
         readonly HttpClient client;
         ILogger<ClientBase> logger;
 
@@ -21,18 +13,7 @@ namespace BrandUp.AmoCRM
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        #region IAmoCRMClient members
-
-        public async Task<IEnumerable<T>> GetAllAsync<T>(params string[] parameters)
-        {
-            var path = PathFor<T>(parameters);
-            using var request = new HttpRequestMessage(HttpMethod.Get, path);
-
-            using var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
-
-            var data = await response.Content.ReadFromJsonAsync<T[]>();
-            return data;
-        }
+        #region IClientBase members
 
         public Task<T> GetAsync<T>(params string[] parameters)
         {
@@ -63,14 +44,14 @@ namespace BrandUp.AmoCRM
 
         #region Helpers
 
-        private Uri PathFor<T>(string[] parameters)
-        {
-            var path = new StringBuilder(pathDictionary[typeof(T)]);
-            path.Append("?");
-            path.Append(string.Join("&", parameters));
+        //private Uri PathFor<T>(string[] parameters)
+        //{
+        //    var path = new StringBuilder(pathDictionary[typeof(T)]);
+        //    path.Append("?");
+        //    path.Append(string.Join("&", parameters));
 
-            return new Uri(path.ToString());
-        }
+        //    return new Uri(path.ToString());
+        //}
 
         #endregion
     }

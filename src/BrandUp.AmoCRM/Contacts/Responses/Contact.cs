@@ -1,4 +1,6 @@
-﻿namespace BrandUp.AmoCRM.Models
+﻿using BrandUp.AmoCRM.Models;
+
+namespace BrandUp.AmoCRM.Contacts.Responses
 {
     public class Contact : BaseResponse<ContactEmbedded>
     {
